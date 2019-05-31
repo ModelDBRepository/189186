@@ -1,0 +1,69 @@
+//moddir 01_Soma-dendritic_recordings/01_Control/140311-C1/syncytium/num10
+load_file("nrngui.hoc")
+
+// folders with init_fitting.hoc
+strdef str1, str2, str3, str4, str5, str6, str7, str8, str9, str10, str11, str12
+str1="01_Soma-dendritic_recordings/01_Control/140307-C1/"
+str2="01_Soma-dendritic_recordings/01_Control/140311-C0/"
+str3="01_Soma-dendritic_recordings/01_Control/140311-C1/single cell/"
+str4="01_Soma-dendritic_recordings/01_Control/140311-C1/syncytium/num10/"
+str5="01_Soma-dendritic_recordings/01_Control/140311-C1/syncytium/num3/"
+str6="01_Soma-dendritic_recordings/01_Control/140403-C0/"
+str7="01_Soma-dendritic_recordings/01_Control/140403-C1/"
+str8="01_Soma-dendritic_recordings/02_Mefloquine/150430-C1/"
+str9="01_Soma-dendritic_recordings/02_Mefloquine/150602-C4/"
+str10="01_Soma-dendritic_recordings/02_Mefloquine/150603-C0/"
+str11="01_Soma-dendritic_recordings/02_Mefloquine/150603-C3/"
+str12="01_Soma-dendritic_recordings/02_Mefloquine/150717-C0/"
+
+strdef str13, str14, str15, str16, str17, str18
+// folders with init_auto_fitting.hoc
+str13="01_Soma-dendritic_recordings/01_Control/140311-C1/syncytium/num10/"
+str14="01_Soma-dendritic_recordings/01_Control/140311-C1/syncytium/num3/"
+str15="02_Somatic_paired_recordings/140514-C2/"
+str16="02_Somatic_paired_recordings/140610-C0/"
+str17="02_Somatic_paired_recordings/140610-C1/"
+str18="02_Somatic_paired_recordings/140624-C0/"
+
+xpanel("Szoboszlay et al 2016 simulations")
+  xlabel("Select Quit in between simulations")
+  xbutton("Quit","quit()")
+  xlabel("Choose a simulation by clicking below.")
+  xlabel("init_fitting:")
+  xlabel("(click \"Error Value\" in window MulRunFitter[0] Generators)")
+  xbutton(str1, "load_sim(str1)")
+  xbutton(str2, "load_sim(str2)")
+  xbutton(str3, "load_sim(str3)")
+  xbutton(str4, "load_sim(str4)")
+  xbutton(str5, "load_sim(str5)")
+  xbutton(str6, "load_sim(str6)")
+  xbutton(str7, "load_sim(str7)")
+  xbutton(str8, "load_sim(str8)")
+  xbutton(str9, "load_sim(str9)")
+  xbutton(str10, "load_sim(str10)")
+  xbutton(str11, "load_sim(str11)")
+  xbutton(str12, "load_sim(str12)")
+
+  xlabel("folders with init_auto_fitting:")
+  xbutton(str13, "load_sim_auto(str13)")
+  xbutton(str14, "load_sim_auto(str14)")
+  xbutton(str15, "load_sim_auto(str15)")
+  xbutton(str16, "load_sim_auto(str16)")
+  xbutton(str17, "load_sim_auto(str17)")
+  xbutton(str18, "load_sim_auto(str18)")
+xpanel()
+
+// chdir("01_Soma-dendritic_recordings/01_Control/140311-C1/syncytium/num10")
+strdef tmpstr
+proc load_sim() {
+  tmpstr=$s1
+  print "loading: ",tmpstr
+  chdir(tmpstr)
+  load_file("init_fitting.hoc")
+}
+proc load_sim_auto() {
+  tmpstr=$s1
+  print "loading: ",tmpstr
+  chdir(tmpstr)
+  load_file("init_auto_fitting.hoc")
+}
